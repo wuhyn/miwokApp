@@ -36,19 +36,19 @@ public class NumbersActivity extends AppCompatActivity {
         LinearLayout rootView = (LinearLayout)findViewById(R.id.rootView);
 
         //Setting up while loop
-        int index = 0;
+        int index;
 
-        while(index < words.size()){
+        for(index = 0; index < words.size(); index++){
             TextView wordView = new TextView(this);
-            //Get different index
+
+            //Set text as it iterates thru the arraylist
             wordView.setText(words.get(index));
 
             //Add view
             rootView.addView(wordView);
-
-            //Update index
-            index++;
         }
+
+        
 
 
     }
