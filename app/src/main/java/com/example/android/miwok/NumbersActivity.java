@@ -3,12 +3,15 @@ package com.example.android.miwok;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import org.w3c.dom.Text;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class NumbersActivity extends AppCompatActivity {
 
@@ -32,21 +35,27 @@ public class NumbersActivity extends AppCompatActivity {
         words.add("nine");
         words.add("ten");
 
-        //Point to the rootView in numbersActivity.xml
-        LinearLayout rootView = (LinearLayout)findViewById(R.id.rootView);
+        ArrayAdapter<String> itemsAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, words);
 
-        //Setting up while loop
-        int index;
+        ListView listView = (ListView)findViewById(R.id.list);
 
-        for(index = 0; index < words.size(); index++){
-            TextView wordView = new TextView(this);
+        listView.setAdapter(itemsAdapter);
 
-            //Set text as it iterates thru the arraylist
-            wordView.setText(words.get(index));
-
-            //Add view
-            rootView.addView(wordView);
-        }
+//        //Point to the rootView in numbersActivity.xml
+//        LinearLayout rootView = (LinearLayout)findViewById(R.id.rootView);
+//
+//        //Setting up while loop
+//        int index;
+//
+//        for(index = 0; index < words.size(); index++){
+//            TextView wordView = new TextView(this);
+//
+//            //Set text as it iterates thru the arraylist
+//            wordView.setText(words.get(index));
+//
+//            //Add view
+//            rootView.addView(wordView);
+//        }
 
         
 
