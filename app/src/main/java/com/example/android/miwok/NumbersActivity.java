@@ -21,43 +21,26 @@ public class NumbersActivity extends AppCompatActivity {
         setContentView(R.layout.activity_numbers);
 
         //Create arraylist called words
-        ArrayList<String> words = new ArrayList<>();
+        ArrayList<Word> words = new ArrayList<Word>();
 
         //Add words to arraylist
-        words.add("one");
-        words.add("two");
-        words.add("three");
-        words.add("four");
-        words.add("five");
-        words.add("six");
-        words.add("seven");
-        words.add("eight");
-        words.add("nine");
-        words.add("ten");
+        words.add(new Word("one", "lutti"));
+        words.add(new Word("two", "otiiko"));
+        words.add(new Word("three", "tolookosu"));
+        words.add(new Word("four", "oyyisa"));
+        words.add(new Word("five", "massokka"));
+        words.add(new Word("six", "temmokka"));
+        words.add(new Word("seven", "kenekaku"));
+        words.add(new Word("eight", "kawinta"));
+        words.add(new Word("nine", "wo'e"));
+        words.add(new Word("ten", "na'aacha"));
 
-        ArrayAdapter<String> itemsAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, words);
+        WordAdapter adapter = new WordAdapter(this, words);
 
         ListView listView = (ListView)findViewById(R.id.list);
 
-        listView.setAdapter(itemsAdapter);
+        listView.setAdapter(adapter);
 
-//        //Point to the rootView in numbersActivity.xml
-//        LinearLayout rootView = (LinearLayout)findViewById(R.id.rootView);
-//
-//        //Setting up while loop
-//        int index;
-//
-//        for(index = 0; index < words.size(); index++){
-//            TextView wordView = new TextView(this);
-//
-//            //Set text as it iterates thru the arraylist
-//            wordView.setText(words.get(index));
-//
-//            //Add view
-//            rootView.addView(wordView);
-//        }
-
-        
 
 
     }
