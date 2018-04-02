@@ -2,23 +2,16 @@ package com.example.android.miwok;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
-import android.widget.ArrayAdapter;
-import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.TextView;
-
-import org.w3c.dom.Text;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class NumbersActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_numbers);
+        setContentView(R.layout.word_list);
 
         //Create arraylist called words
         ArrayList<Word> words = new ArrayList<Word>();
@@ -35,10 +28,13 @@ public class NumbersActivity extends AppCompatActivity {
         words.add(new Word("nine", "wo'e"));
         words.add(new Word("ten", "na'aacha"));
 
+        //Put the the words arraylist into WordAdapter
         WordAdapter adapter = new WordAdapter(this, words);
 
+        //Find the listView
         ListView listView = (ListView)findViewById(R.id.list);
 
+        //Insert list items using an adapter
         listView.setAdapter(adapter);
 
 
