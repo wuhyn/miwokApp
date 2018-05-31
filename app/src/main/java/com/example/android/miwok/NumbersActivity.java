@@ -14,7 +14,7 @@ public class NumbersActivity extends AppCompatActivity {
         setContentView(R.layout.word_list);
 
         //Create arraylist called words
-        ArrayList<Word> words = new ArrayList<Word>();
+        ArrayList<Word> words = new ArrayList<>();
 
         //Add words to arraylist
         words.add(new Word("one", "lutti"));
@@ -31,7 +31,7 @@ public class NumbersActivity extends AppCompatActivity {
         //Put the the words arraylist into WordAdapter
         WordAdapter adapter = new WordAdapter(this, words);
 
-        //Find the listView
+        //Find the listView in word_list.xml
         ListView listView = (ListView)findViewById(R.id.list);
 
         //Insert list items using an adapter
