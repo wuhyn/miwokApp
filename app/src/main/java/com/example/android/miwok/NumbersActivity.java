@@ -29,7 +29,7 @@ public class NumbersActivity extends AppCompatActivity {
         words.add(new Word("ten", "na'aacha", R.drawable.number_ten));
 
         //Put the the words arraylist into WordAdapter
-        WordAdapter adapter = new WordAdapter(this, words);
+        WordAdapter adapter = new WordAdapter(this, words, R.color.category_numbers);
 
         //Find the listView in word_list.xml
         ListView listView = (ListView)findViewById(R.id.list);
