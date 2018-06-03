@@ -48,9 +48,22 @@ public class WordAdapter extends ArrayAdapter<Word> {
         // set this text on the number TextView
         defaultTextView.setText(currentWord.getDefaultTranslation());
 
+        // Find the ImageView in list_item.xml with the ID image
         ImageView  imageView = (ImageView) listItemView.findViewById(R.id.image);
 
-        imageView.setImageResource(currentWord.getImageResourceId());
+        //imageView.setImageResource(currentWord.getImageResourceId());
+
+        // Check if the current word has an image
+        // Show image
+        if(currentWord.hasImage()){
+            imageView.setImageResource(currentWord.getImageResourceId());
+
+            imageView.setVisibility(View.VISIBLE);
+        }
+        //hide image like in phrases page
+        else{
+            imageView.setVisibility(View.GONE);
+        }
 
 
         //Setting theme for list item
