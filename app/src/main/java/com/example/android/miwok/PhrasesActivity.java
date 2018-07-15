@@ -14,6 +14,14 @@ public class PhrasesActivity extends AppCompatActivity {
     //Handles audio playback
     private MediaPlayer mMediaPlayer;
 
+    //This listener gets triggered when MediaPlayer has completed playing the audio file.
+    private MediaPlayer.OnCompletionListener mCompletionListener = new MediaPlayer.OnCompletionListener() {
+        @Override
+        public void onCompletion(MediaPlayer mp) {
+            releaseMediaPlayer();
+        }
+    };
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,13 +55,40 @@ public class PhrasesActivity extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                //Get the word object based on the one the user clicked on
                 Word word = words.get(position);
 
+                //Release mediaplayer resources here in case an audio is played before previous one
+                //ends
+                releaseMediaPlayer();
+
+                //Create the audio resource associated with the word
                 mMediaPlayer = MediaPlayer.create(PhrasesActivity.this, word.getAudioResourceId());
 
+                //Start the audio file
                 mMediaPlayer.start();
+
+                //When sound stops playing, release the memory
+                mMediaPlayer.setOnCompletionListener(mCompletionListener);
             }
         });
 
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+
+        //Release media player resources because when activity stops, sounds don't need to be played.
+        releaseMediaPlayer();
+    }
+
+    private void releaseMediaPlayer(){
+        if(mMediaPlayer != null){
+
+            mMediaPlayer.release();
+
+            mMediaPlayer = null;
+        }
     }
 }
