@@ -18,6 +18,7 @@ package com.example.android.miwok;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -81,12 +82,19 @@ public class MainActivity extends AppCompatActivity {
         ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);
 
         // Create an adapter that knows which fragment should be shown on each page
-        CategoryAdapter adapter = new CategoryAdapter(getSupportFragmentManager());
+        CategoryAdapter adapter = new CategoryAdapter(getSupportFragmentManager(), getApplicationContext());
 
         // Set the adapter onto the view pager
         viewPager.setAdapter(adapter);
+
+        //Find the tab layout for switching tabs
+        TabLayout tabLayout = (TabLayout) findViewById(R.id.sliding_tabs);
+
+        //Link tab layout to view pager
+        tabLayout.setupWithViewPager(viewPager);
+
+        //Remove appbar shadow at the bottom
+        this.getSupportActionBar().setElevation(0);
     }
-
-
 
 }
